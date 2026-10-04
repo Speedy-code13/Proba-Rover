@@ -73,7 +73,7 @@ async function waitForRover() : Promise<schemas["GameView"]>{
         if(gameState.activeAction == null) //rover ul e liber
             return gameState;
 
-        await new Promise((resolve) => setTimeout(resolve, 200))
+        await new Promise((resolve) => setTimeout(resolve, 100))
 
     }
 
@@ -97,7 +97,7 @@ while(!triggerStopGame){
         console.log("Relative angle to next target: "+ beacon?.bearingDeg)
     }
     const bearingDeg  = beacon?.bearingDeg! // stim ca e non-null tho
-    if(Math.abs(bearingDeg) >= 45)
+    if(Math.abs(bearingDeg) >= 90)
     {
         if(bearingDeg < 0)
             await sendAction("rotate_left")
@@ -128,6 +128,7 @@ while(!triggerStopGame){
     if(gameState.target == 3 || gameState.status == 'finished')
     {
         console.log("Am atins toate 3 tintele!")
+        console.log("Scor: " + gameState.score)
         triggerStopGame = true
     }
     else if(gameState.status !='active')
