@@ -1,0 +1,26 @@
+Eu sunt mai comfortabil cu limbaje mai low level precum C++, C# si Java, dar am ales framework-ul node.js deoarece era cea mai buna unealta pentru un REST API cu JSON.
+Am ales typescript penttu type safety si evitarea erorilor runtime, am importat type-uri folosind openapi.(putin overkill pentru complexitatea proiectului)
+
+
+Am ales un sistem foarte simplu, fara nicio componenta optionala, astfel fara nicio penalizare.
+
+De ce fara IMU/GPS? Am beacon-ul, care mi ofera unghiul si distanta pana la target, deci nu conteaza daca o miscare da fail deoarece eu am unghiul relativ. (no need for absolute positioning)
+
+De ce fara depth camera? Legat de obstacole, statistic vorbind, in majoritatea run-urilor nu le intampini, deci nu are sens sa implementez un sistem de avoidance, astfel castig mai multe puncte deoarece nu se mai scad punctele depth camera-ului(+ fiind o simulare pe un API nu are ce sa se strice)
+
+
+Off context: am fost putin baffled de faptul ca un IMU consuma la fel de multa energie ca move forward. Bamnuiesc pe un robot real costul lui e neglijabil.
+
+Citesc beacon-ul, in functie de unghi ma rotesc spre el si dau move_forward(astept intre miscari folosind api call-ul pentru gamestate)
+
++ boilerplate ofc
+Am si o conditie pentru sfarsitul jocului.
+
+
+Intr-adevar, pierd puncte din cauza faptului ca nu abordez rocile/solul/analizarea lor. (eram pe 1 aseara la 10 noaptea, acum e 9 dimineata)
+
+
+Consider ca puteam sa imbunatatesc acest algoritm prin abordarea probelor, dar n-am vrut sa fac ceva overkill(pentru ceva ce nu se va materializa)
+
+
+

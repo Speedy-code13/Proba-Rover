@@ -1,10 +1,9 @@
 import 'dotenv/config'
 import type {components} from "./ares-types.js"
+import { json } from 'node:stream/consumers'
 
 type schemas = components['schemas']
-
 const API_URL = process.env.API_URL
-
 const header =  {
     "Authorization" : `Bearer ${process.env.API_KEY}`,
     "Content-Type" : "application/json"
@@ -27,6 +26,11 @@ async function startGame(){
         body: JSON.stringify(loadout)
     })
 
+    const jsonPost = await newRoundPost.json()
+    if(jsonPost?.error !== undefined)
+        console.log(jsonPost.error)
+    
+
 }
 
 async function sendAction(action: string) {
@@ -39,6 +43,9 @@ async function sendAction(action: string) {
         body: JSON.stringify(body)
     })
 }
+
+
+
 
 
 

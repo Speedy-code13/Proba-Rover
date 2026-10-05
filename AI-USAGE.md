@@ -1,0 +1,1 @@
+M-am folosit de AI pentru a ma documenta de OpenApi si cum pot face sa extrag tipurile de date pentru typescript din fisierul oferit pe website.
